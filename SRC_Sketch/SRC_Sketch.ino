@@ -22,20 +22,32 @@ DFPlayer - A Mini MP3 Player For Arduino
 #include "Arduino.h"
 #include "DFRobotDFPlayerMini.h"
 #include <OneButton.h>
+#include <colors.h>  //adding installed library
+#include <Adafruit_NeoPixel.h>  //adding installed library
+
+Adafruit_NeoPixel pixel(12, 17, NEO_GRB + NEO_KHZ800);  //declaring my object
 
 DFRobotDFPlayerMini myDFPlayer;
+const int PIXELPIN = 17; //declare pixel pin as 17
+const int PIXELCOUNT = 12; //declare 16 pixels
+int i;  //declaring an variable for my 'for' loop
+
+
 void printDetail(uint8_t type, int value);
-bool enableMusicPlayer, buttonState, blinker;
+bool enableMusicPlayer, buttonState, onoff;
 
 OneButton button1(23, false, INPUT);  //object defined as pin 23, circuit is pull down, and button is considered an input 
 
-void setup()
-{
+void setup() {
   button1.attachClick(click1); //initializing the object
   button1.attachDoubleClick(doubleClick1); //initializing the object
   button1.setClickTicks(500); //setting timer on clicks off
   button1.setPressTicks(2000); //setting timer on click ticks on
   buttonState = false;  //the button state is set to off initialilly
+  pixel.begin();  //pixel begin
+  pinMode(PIXELPIN, OUTPUT);  //use PIXELPIN as an output
+  pixel.setBrightness(250); //set brightness to max
+  pixel.show(); //initializing all as of
   Serial1.begin(9600);
   Serial.begin(115200);
   
@@ -50,7 +62,7 @@ void setup()
 //    while(true){
 //      delay(0); // Code to compatible with ESP8266 watch dog.
 //    }
-
+//
     for (int i = 0; i < 5; i++) {
     enableMusicPlayer = myDFPlayer.begin(Serial1);
     delay(200);
@@ -66,16 +78,30 @@ void setup()
 //    Serial.printf("Zepplin go!");
 //  }
 }
-void loop()
-{
+void loop() {
   button1.tick();  //check the state of the button
   static unsigned long timer = millis();
+    
+    if (buttonState == true) {
+    
+    for (i = 0; i >13; i = i + 1) {
+    pixel.fill(maize, i += 1, 12);   //setting pixel color as maize
+    pixel.show();
 
-    if (buttonState == true){
-    myDFPlayer.volume(30);  //Set volume value. From 0 to 30
-    myDFPlayer.play(1);  //Play the first mp3
-    Serial.printf("Zepplin go!");
-  }
+        for (int i = 0; i < 5; i++) {
+        enableMusicPlayer = myDFPlayer.begin(Serial1);
+        delay(200);
+          if (enableMusicPlayer) {
+          break;
+          }
+        }
+      }
+    } 
+//          if (buttonState == false) {  //if buttonState is 1 then
+//          //onoff = !onoff; //toggle on and off
+//          pixel.fill(black, i -= 1, 12); 
+//          pixel.show();
+     //}
 //  if (millis() - timer > 3000000) {
 //    timer = millis();
 //    myDFPlayer.next();  //Play next mp3 every 3 second.
@@ -85,6 +111,7 @@ void loop()
     printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
   }
 }
+
 
 void printDetail(uint8_t type, int value){
   switch (type) {
