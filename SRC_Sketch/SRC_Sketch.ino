@@ -1,23 +1,3 @@
-/***************************************************
-DFPlayer - A Mini MP3 Player For Arduino
- <https://www.dfrobot.com/product-1121.html>
- 
- ***************************************************
- This example shows the basic function of library for DFPlayer.
- 
- Created 2016-12-07
- By [Angelo qiao](Angelo.qiao@dfrobot.com)
- 
- GNU Lesser General Public License.
- See <http://www.gnu.org/licenses/> for details.
- All above must be included in any redistribution
- ****************************************************/
-
-/***********Notice and Trouble shooting***************
- 1.Connection and Diagram can be found here
- <https://www.dfrobot.com/wiki/index.php/DFPlayer_Mini_SKU:DFR0299#Connection_Diagram>
- 2.This code is tested on Arduino Uno, Leonardo, Mega boards.
- ****************************************************/
 
 #include "Arduino.h"
 #include "DFRobotDFPlayerMini.h"
@@ -84,9 +64,10 @@ void loop() {
     
     if (buttonState == true) {
     
-    for (i = 0; i >13; i = i + 1) {
+    //{
     pixel.fill(maize, i += 1, 12);   //setting pixel color as maize
     pixel.show();
+    //}
 
         for (int i = 0; i < 5; i++) {
         enableMusicPlayer = myDFPlayer.begin(Serial1);
@@ -94,22 +75,22 @@ void loop() {
           if (enableMusicPlayer) {
           break;
           }
-        }
-      }
-    } 
-//          if (buttonState == false) {  //if buttonState is 1 then
-//          //onoff = !onoff; //toggle on and off
-//          pixel.fill(black, i -= 1, 12); 
-//          pixel.show();
-     //}
-//  if (millis() - timer > 3000000) {
-//    timer = millis();
-//    myDFPlayer.next();  //Play next mp3 every 3 second.
-//  }
+        } 
+    }
+          if (buttonState == false) {  //if buttonState is 1 then
+          onoff = !onoff; //toggle on and off
+          pixel.fill(black, i -= 1, 12); 
+          pixel.show();
+          }
+          
+          if (millis() - timer > 3000000) {
+          timer = millis();
+          myDFPlayer.next();  //Play next mp3 every 3 second.
+          }
   
-  if (myDFPlayer.available()) {
-    printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
-  }
+          if (myDFPlayer.available()) {
+           printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
+          }
 }
 
 
