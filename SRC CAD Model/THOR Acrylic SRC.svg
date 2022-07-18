@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 26.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1550.7 581.2" style="enable-background:new 0 0 1550.7 581.2;" xml:space="preserve">
+	 viewBox="0 0 1521.1 542.6" style="enable-background:new 0 0 1521.1 542.6;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#FF0000;stroke-width:1.000000e-03;stroke-linecap:round;stroke-miterlimit:11.3386;}
-	
-		.st1{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#777777;stroke-width:1.000000e-03;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st0{fill:none;stroke:#FF0000;stroke-width:0.2835;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st1{fill:none;stroke:#777777;stroke-width:1.000000e-03;stroke-linecap:round;stroke-miterlimit:11.3386;}
 </style>
 <g id="svgGroup">
-	<path id="front_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M59.9,581.2v-5.7h56v5.7l0,0h56l0,0v-5.7h56
-		v5.7l0,0h56l0,0v-5.7h56v5.7l0,0h56l0,0v-5.7h56v5.7l0,0h56l0,0v-5.7h56v5.7l0,0h59.9l0,0v-34.1l0,0H618v-56h5.7l0,0v-56l0,0H618
-		v-56h5.7l0,0V345l0,0h-59.9l0,0v5.7h-56V345l0,0h-56l0,0v5.7h-56V345l0,0h-56l0,0v5.7h-56V345l0,0h-56l0,0v5.7h-56V345l0,0h-56l0,0
-		v5.7h-56V345l0,0H0l0,0v34.1l0,0h5.7v56H0l0,0v56l0,0h5.7v56H0l0,0v34.1l0,0L59.9,581.2L59.9,581.2z"/>
-	<path id="left_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M691.4,581.2v-5.7h56v5.7l0,0h56l0,0v-5.7h56
-		v5.7l0,0h53.5l0,0v-34.1h5.7l0,0v-56l0,0h-5.7v-56h5.7l0,0v-56l0,0h-5.7V345l0,0h-53.5l0,0v5.7h-56V345l0,0h-56l0,0v5.7h-56V345
-		l0,0h-53.5l0,0v34.1h-5.7l0,0v56l0,0h5.7v56h-5.7l0,0v56l0,0h5.7v34.1l0,0L691.4,581.2L691.4,581.2z"/>
-	<path id="top_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M1042.9,581.2v-5.7h56v5.7l0,0h56l0,0v-5.7h56
-		v5.7l0,0h56l0,0v-5.7h56v5.7l0,0h56l0,0v-5.7h56v5.7l0,0h56l0,0v-5.7h54.2l0,0V522h5.7l0,0v-56l0,0h-5.7v-56h5.7l0,0v-56l0,0h-5.7
-		v-53.5l0,0h-54.2v-5.7l0,0h-56l0,0v5.7h-56v-5.7l0,0h-56l0,0v5.7h-56v-5.7l0,0h-56l0,0v5.7h-56v-5.7l0,0h-56l0,0v5.7h-56v-5.7l0,0
-		h-56l0,0v5.7h-54.2l0,0V354H927l0,0v56l0,0h5.7v56H927l0,0v56l0,0h5.7v53.5l0,0h54.2v5.7l0,0L1042.9,581.2L1042.9,581.2z"/>
-	<path id="back_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M59.9,336.5v-5.7h56v5.7l0,0h56l0,0v-5.7h56v5.7
-		l0,0h56l0,0v-5.7h56v5.7l0,0h56l0,0v-5.7h56v5.7l0,0h56l0,0v-5.7h56v5.7l0,0h59.9l0,0v-34.1l0,0H618v-56h5.7l0,0v-56l0,0H618v-56
-		h5.7l0,0v-34.1l0,0h-59.9l0,0v5.7h-56v-5.7l0,0h-56l0,0v5.7h-56v-5.7l0,0h-56l0,0v5.7h-56v-5.7l0,0h-56l0,0v5.7h-56v-5.7l0,0h-56
-		l0,0v5.7h-56v-5.7l0,0H0l0,0v34.1l0,0h5.7v56H0l0,0v56l0,0h5.7v56H0l0,0v34.1l0,0L59.9,336.5L59.9,336.5z"/>
-	<path id="right_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M691.4,336.5v-5.7h56v5.7l0,0h56l0,0v-5.7h56
-		v5.7l0,0h53.5l0,0v-34.1h5.7l0,0v-56l0,0h-5.7v-56h5.7l0,0v-56l0,0h-5.7v-34.1l0,0h-53.5l0,0v5.7h-56v-5.7l0,0h-56l0,0v5.7h-56
-		v-5.7l0,0h-53.5l0,0v34.1h-5.7l0,0v56l0,0h5.7v56h-5.7l0,0v56l0,0h5.7v34.1l0,0L691.4,336.5L691.4,336.5z"/>
-	<path id="bottom_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M1042.9,286.3v-5.7h56v5.7l0,0h56l0,0v-5.7h56
-		v5.7l0,0h56l0,0v-5.7h56v5.7l0,0h56l0,0v-5.7h56v5.7l0,0h56l0,0v-5.7h54.2l0,0v-53.5h5.7l0,0v-56l0,0h-5.7v-56h5.7l0,0v-56l0,0
-		h-5.7V5.7l0,0h-54.2V0l0,0h-56l0,0v5.7h-56V0l0,0h-56l0,0v5.7h-56V0l0,0h-56l0,0v5.7h-56V0l0,0h-56l0,0v5.7h-56V0l0,0h-56l0,0v5.7
-		h-54.2l0,0v53.5H927l0,0v56l0,0h5.7v56H927l0,0v56l0,0h5.7v53.5l0,0h54.2v5.7l0,0L1042.9,286.3L1042.9,286.3z"/>
-	<circle class="st1" cx="774.9" cy="241" r="45.3"/>
-	<polygon class="st1" points="1222.9,423.6 1084.6,423.6 1084.2,336.4 1222.3,336.4 	"/>
-	<rect x="1266.8" y="423.6" class="st1" width="139" height="131.4"/>
+	<path id="front_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M141.8,546.6v-8.3h51.5v8.3l0.2,0.2h52.3
+		l0.2-0.2v-8.3h51.5v8.3l0.2,0.2h52.3l0.2-0.2v-8.3h51.5v8.3l0.2,0.2h52.3l0.2-0.2v-8.3h51.5v8.3l0.2,0.2h52.3l0.2-0.2v-8.3H610v8.3
+		l0.2,0.2H685l0.2-0.2v-31.2l-0.2-0.2h-8.3v-51.5h8.3l0.2-0.2v-52.3l-0.2-0.2h-8.3v-51.5h8.3l0.2-0.2v-31.2L685,328h-74.8l-0.2,0.2
+		v8.3h-51.5v-8.3l-0.2-0.2H506l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5
+		v-8.3l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2H66.8l-0.2,0.2v31.2l0.2,0.2h8.3v51.5h-8.3l-0.2,0.2v52.3l0.2,0.2h8.3v51.5
+		h-8.3l-0.2,0.2v31.2l0.2,0.2h74.8L141.8,546.6z"/>
+	<path id="left_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M749.3,546.6v-8.3h51.5v8.3l0.2,0.2h52.3
+		l0.2-0.2v-8.3H905v8.3l0.2,0.2H952l0.2-0.2v-30.8h8.3l0.2-0.2v-52.3l-0.2-0.2h-8.3v-51.5h8.3l0.2-0.2v-52.3l-0.2-0.2h-8.3v-30.8
+		L952,328h-46.8l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2H801l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2h-46.8l-0.2,0.2V359h-8.3l-0.2,0.2v52.3
+		l0.2,0.2h8.3v51.5h-8.3l-0.2,0.2v52.3l0.2,0.2h8.3v30.8l0.2,0.2h46.8L749.3,546.6z"/>
+	<path id="top_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M1096.4,546.6v-8.3h51.5v8.3l0.2,0.2h52.3
+		l0.2-0.2v-8.3h51.5v8.3l0.2,0.2h52.3l0.2-0.2v-8.3h51.5v8.3l0.2,0.2h52.3l0.2-0.2v-8.3h51.5v8.3l0.2,0.2h52.3l0.2-0.2v-8.3h65.9
+		l0.2-0.2v-46.4h8.3l0.2-0.2v-52.3l-0.2-0.2h-8.3v-51.5h8.3l0.2-0.2V335l-0.2-0.2h-8.3v-46.4l-0.2-0.2h-65.9v-8.3l-0.2-0.2h-52.3
+		l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2h-52.3l-0.2,0.2
+		v8.3h-51.5v-8.3l-0.2-0.2h-52.3l-0.2,0.2v8.3h-65.9l-0.2,0.2v46.4h-8.3l-0.2,0.2v52.3l0.2,0.2h8.3v51.5h-8.3l-0.2,0.2v52.3l0.2,0.2
+		h8.3v46.4l0.2,0.2h65.9v8.3l0.2,0.2h52.3L1096.4,546.6z"/>
+	<path id="back_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M141.8,319.3V311h51.5v8.3l0.2,0.2h52.3l0.2-0.2
+		V311h51.5v8.3l0.2,0.2h52.3l0.2-0.2V311h51.5v8.3l0.2,0.2h52.3l0.2-0.2V311h51.5v8.3l0.2,0.2h52.3l0.2-0.2V311H610v8.3l0.2,0.2H685
+		l0.2-0.2v-31.2l-0.2-0.2h-8.3v-51.5h8.3l0.2-0.2v-52.3l-0.2-0.2h-8.3v-51.5h8.3l0.2-0.2v-31.2l-0.2-0.2h-74.8l-0.2,0.2v8.3h-51.5
+		v-8.3l-0.2-0.2H506l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5v-8.3
+		l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2H66.8l-0.2,0.2V132l0.2,0.2h8.3v51.5h-8.3l-0.2,0.2v52.3l0.2,0.2h8.3v51.5h-8.3
+		l-0.2,0.2v31.2l0.2,0.2h74.8L141.8,319.3z"/>
+	<path id="right_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M749.3,319.3V311h51.5v8.3l0.2,0.2h52.3
+		l0.2-0.2V311H905v8.3l0.2,0.2H952l0.2-0.2v-30.8h8.3l0.2-0.2V236l-0.2-0.2h-8.3v-51.5h8.3l0.2-0.2v-52.3l-0.2-0.2h-8.3v-30.8
+		l-0.2-0.2h-46.8l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2H801l-0.2,0.2v8.3h-51.5v-8.3l-0.2-0.2h-46.8l-0.2,0.2v30.8h-8.3l-0.2,0.2v52.3
+		l0.2,0.2h8.3v51.5h-8.3l-0.2,0.2v52.3l0.2,0.2h8.3v30.8l0.2,0.2h46.8L749.3,319.3z"/>
+	<path id="bottom_outsideCutPath" vector-effect="non-scaling-stroke" class="st0" d="M1096.4,271.1v-8.3h51.5v8.3l0.2,0.2h52.3
+		l0.2-0.2v-8.3h51.5v8.3l0.2,0.2h52.3l0.2-0.2v-8.3h51.5v8.3l0.2,0.2h52.3l0.2-0.2v-8.3h51.5v8.3l0.2,0.2h52.3l0.2-0.2v-8.3h65.9
+		l0.2-0.2v-46.4h8.3l0.2-0.2v-52.3l-0.2-0.2h-8.3V112h8.3l0.2-0.2V59.5l-0.2-0.2h-8.3V12.9l-0.2-0.2h-65.9V4.4l-0.2-0.2h-52.3
+		l-0.2,0.2v8.3h-51.5V4.4l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5V4.4l-0.2-0.2h-52.3l-0.2,0.2v8.3h-51.5V4.4l-0.2-0.2h-52.3l-0.2,0.2
+		v8.3h-51.5V4.4l-0.2-0.2h-52.3l-0.2,0.2v8.3h-65.9l-0.2,0.2v46.4h-8.3l-0.2,0.2v52.3l0.2,0.2h8.3v51.5h-8.3l-0.2,0.2V216l0.2,0.2
+		h8.3v46.4l0.2,0.2h65.9v8.3l0.2,0.2h52.3L1096.4,271.1z"/>
+	<g>
+		<polygon class="st1" points="1244,402.3 1105.7,402.3 1105.3,315.1 1243.3,315.1 		"/>
+		<rect x="1291.2" y="381.7" class="st1" width="139" height="131.4"/>
+	</g>
 </g>
+<circle class="st1" cx="660" cy="272.6" r="45.3"/>
+<circle class="st1" cx="825.9" cy="239.7" r="45.3"/>
 </svg>

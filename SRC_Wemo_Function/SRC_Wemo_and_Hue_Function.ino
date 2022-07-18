@@ -2,13 +2,13 @@
  #include <colors.h>
  #include <OneButton.h>
  #include <wemo.h>
- #include <mac.h>
+ #include <mac.h> 
  #include <hue.h>
  #include <SPI.h>
  #include <Ethernet.h>
  
  
- OneButton button1(4, false, INPUT_PULLDOWN);  //object defined as pin 4, circuit is pull down, and button is considered an input
+ OneButton button1(4, false, INPUT);  //object defined as pin 4, circuit is pull down, and button is considered an input
  
  const int BUTTONPIN = 4; 
  const int ETHERIN = 12;
@@ -19,6 +19,7 @@
  int i;
  int t;;
  int inputValue;
+ int myButton = 4; 
  int wemoPosition;
  int myWemo[] = {0,1,2,3,4};
  int myHue[] = {0, 1, 2, 3, 4, 5};
@@ -34,7 +35,7 @@ void setup() {
   pinMode(10, OUTPUT);
   digitalWrite(10, HIGH);
 
-  pinMode(4, OUTPUT);
+  pinMode(4, INPUT);
   digitalWrite(4, HIGH);
   
   button1.attachClick(click1); //initializing the object
@@ -58,8 +59,9 @@ void setup() {
 
 void loop() {
   button1.tick();  //check the state of the button
-    inputValue = digitalRead(buttonState);
-    wemoPosition = map(position,0,3,0,4);
+    inputValue = digitalRead(myButton);
+    Serial.printf("%i \n", inputValue);
+    //wemoPosition = map(position,0,3,0,4);
     
 }
 
@@ -67,12 +69,12 @@ void loop() {
   buttonState = !buttonState; //toggling buttonState
 
       if (buttonState == true) {
-      switchON(i);
-      //Serial.printf("Hello Wemo %i /n", wemo);
+      switchON(myWemo[2]);
+      Serial.printf("Hello Wemo %i /n", myWemo);
     }      
           else {
-        switchOFF(i);
-        //Serial.printf("Bye Wemo %i /n", wemo);
+        switchOFF(myWemo[2]);
+        Serial.printf("Bye Wemo %i /n", myWemo);
       }
 }
 

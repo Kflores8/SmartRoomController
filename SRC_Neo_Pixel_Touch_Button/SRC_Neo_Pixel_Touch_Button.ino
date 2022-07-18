@@ -1,14 +1,16 @@
 #include <OneButton.h>
 #include <colors.h>  //adding installed library
 #include <Adafruit_NeoPixel.h>  //adding installed library
+#include "Arduino.h"
+#include "DFRobotDFPlayerMini.h"
 
 const int PIXELPIN = 17; //declare pixel pin as 17
 const int PIXELCOUNT = 76; //declare 16 pixels
 int i;  //declaring an variable for my 'for' loop
 int t; //declaring a variable for Rainbow
 
-
-void printDetail(uint8_t type, int value);
+DFRobotDFPlayerMini myDFPlayer;
+//void printDetail(uint8_t type, int value);
 bool enableMusicPlayer, buttonState, onoff, blinker;
 
 Adafruit_NeoPixel pixel(76, 17, NEO_GRB + NEO_KHZ800);  //declaring my object
@@ -24,10 +26,31 @@ void setup() {
   pinMode(PIXELPIN, OUTPUT);  //use PIXELPIN as an output
   pixel.setBrightness(250); //set brightness to max
   pixel.show(); //initializing all as of
+  Serial1.begin(9600);
+  Serial.begin(115200);
+  
+  Serial.println();
+  Serial.println(F("DFRobot DFPlayer Mini Demo"));
+  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
+    
+  delay(2000);
+  Serial.println(F("DFPlayer Mini online."));
+           
+           for (int i = 0; i < 5; i++) {
+            enableMusicPlayer = myDFPlayer.begin(Serial1);
+            delay(200);
+            if (enableMusicPlayer) {
+            break;
+            }
+            myDFPlayer.volume(20);  //Set volume value. From 0 to 30
+            myDFPlayer.play(1);  //Play the first mp3
+           }
 }
 
 void loop() {
   button1.tick();  //check the state of the button
+  static unsigned long timer = millis();
+  
     if (buttonState == true){
       for (i = 0; i < 12; i = i + 1) {  //telling LED use 0 -76 when incrementing lights
         pixel.clear();
@@ -44,14 +67,19 @@ void loop() {
         pixel.setPixelColor(i+2, maize);
         pixel.show();
         delay(10);
-    
       }
-
-      //if (buttonState == false) {
-      //  pixel.clear();
-      //}
     }
+      if (millis() - timer > 3000000) {
+      timer = millis();
+      myDFPlayer.next();  //Play next mp3 every 3 second.
+      }
+  
+      if (myDFPlayer.available()) {
+//      Serial.printf("myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
+      }
 }
+
+
 void click1() {  //function that is going to tell Serial printf to log clicks on and off
   buttonState = !buttonState; //toggling buttonState
   Serial.printf("Button single click /n");

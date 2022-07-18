@@ -83,26 +83,29 @@ void loop() {
   pixelPosition2 = map(inHG,0,35,0,16);
 
         if (tempF != lastTemp) {
-          pixel.fill(blue, 1, pixelPosition+1);   //setting pixel color as red
-          pixel.show();
+          setHue(3,true,HueBlue,255,255);
+          Serial.printf("Get Hue Data: ");
+          getHue(3);
           testdrawstyles();
           display.display();
           Serial.printf("%f, %f, %i \n", tempF, lastTemp, pixelPosition);
           lastTemp = tempF;
-          pixel.clear();
+          setHue(3,false,0,0,0);
+          delay(5000);
         }
           if (inHG != lastHG) {
-          pixel.fill(red, 1, pixelPosition+1);   //setting pixel color as red
-          pixel.show();
+          setHue(3,true,HueGreen,255,255);
+          Serial.printf("Get Hue Data: ");
+          getHue(3);
           Serial.printf("%f, %f, %i \n", inHG, lastHG, pixelPosition2+1);
-          lastHG = inHG;
-          pixel.clear();
+          setHue(3,false,0,0,0);
+          delay(5000);
         }
 }
 
 void testdrawstyles(void) {
   display.clearDisplay();
-  display.setTextSize(1.3);  //Draw 5x-scale text
+  display.setTextSize(.5);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(10, 0);
   //display.setRotation(2);
@@ -110,42 +113,42 @@ void testdrawstyles(void) {
   display.display();
   delay(100);
 
-  display.setTextSize(1);  //Draw 5x-scale text
+  display.setTextSize(.7);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 10);
   display.printf("The temperature is");
   display.display();
   delay(1000);
 
-  display.setTextSize(1);  //Draw 5x-scale text
+  display.setTextSize(.5);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 20);
   display.printf("%f", tempF);
   display.display();
   delay(1000);
 
-  display.setTextSize(1);  //Draw 5x-scale text
+  display.setTextSize(.5);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 30);
   display.printf("The humidity is");
   display.display();
   delay(1000);
 
-  display.setTextSize(1);  //Draw 5x-scale text
+  display.setTextSize(.5);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 40);
   display.printf("%f", humidRH);
   display.display();
   delay(1000);
 
-      display.setTextSize(1);  //Draw 5x-scale text
+      display.setTextSize(.7);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
-  display.setCursor(10, 60);
+  display.setCursor(10, 50);
   display.printf("The barometric pressure is");
   display.display();
   delay(1000);
 
-  display.setTextSize(1);  //Draw 5x-scale text
+  display.setTextSize(.5);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 60);
   display.printf("%f", humidRH);
