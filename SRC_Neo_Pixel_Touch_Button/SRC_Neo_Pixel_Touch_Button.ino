@@ -13,7 +13,7 @@ DFRobotDFPlayerMini myDFPlayer;
 //void printDetail(uint8_t type, int value);
 bool enableMusicPlayer, buttonState, onoff, blinker;
 
-Adafruit_NeoPixel pixel(76, 17, NEO_GRB + NEO_KHZ800);  //declaring my object
+Adafruit_NeoPixel pixel(12, 17, NEO_GRB + NEO_KHZ800);  //declaring my object
 OneButton button1(23, false, INPUT);  //object defined as pin 23, circuit is pull down, and button is considered an input 
 
 void setup() {
@@ -27,7 +27,7 @@ void setup() {
   pixel.setBrightness(250); //set brightness to max
   pixel.show(); //initializing all as of
   Serial1.begin(9600);
-  Serial.begin(115200);
+  Serial.begin(9600);
   
   Serial.println();
   Serial.println(F("DFRobot DFPlayer Mini Demo"));
@@ -69,14 +69,6 @@ void loop() {
         delay(10);
       }
     }
-      if (millis() - timer > 3000000) {
-      timer = millis();
-      myDFPlayer.next();  //Play next mp3 every 3 second.
-      }
-  
-      if (myDFPlayer.available()) {
-//      Serial.printf("myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
-      }
 }
 
 

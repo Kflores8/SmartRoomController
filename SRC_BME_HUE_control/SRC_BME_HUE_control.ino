@@ -41,7 +41,7 @@ void setup() {
   
   Ethernet.begin(mac);
   delay(200);          //ensure Serial Monitor is up and running           
-  printIP();
+  //printIP();
   Serial.printf("LinkStatus: %i  \n",Ethernet.linkStatus());
 
   display.begin(SCREEN_ADDRESS);
@@ -66,10 +66,10 @@ void loop() {
    *  int - brightness - from 0 to 255
    *  int - saturation - from 0 to 255
    */
-  setHue(3,true,HueBlue,255,255);
+  setHue(i,true,HueBlue,255,255);
   Serial.printf("Get Hue Data: ");
-  getHue(3);
-  setHue(3,false,0,0,0);
+  getHue(i);
+  setHue(i,false,0,0,0);
   delay(5000);
 
   tempC = bme.readTemperature();
@@ -79,26 +79,54 @@ void loop() {
   inHG = pressPA/3386; 
   Serial.printf("%f, %f, %f \n", tempF, inHG, humidRH);
   delay(1000);
-  pixelPosition = map(tempF,0,100,0,16);
-  pixelPosition2 = map(inHG,0,35,0,16);
+
 
         if (tempF != lastTemp) {
+          setHue(6,true,HueBlue,255,255);
+          setHue(1,true,HueBlue,255,255);
+          setHue(2,true,HueBlue,255,255);
           setHue(3,true,HueBlue,255,255);
+          setHue(4,true,HueBlue,255,255);
+          setHue(5,true,HueBlue,255,255);
           Serial.printf("Get Hue Data: ");
+          getHue(6);
+          getHue(1);
+          getHue(2);
           getHue(3);
+          getHue(4);
           testdrawstyles();
           display.display();
-          Serial.printf("%f, %f, %i \n", tempF, lastTemp, pixelPosition);
+          Serial.printf("%f, %f \n", tempF, lastTemp);
           lastTemp = tempF;
+          setHue(6,false,0,0,0);
+          setHue(1,false,0,0,0);
+          setHue(2,false,0,0,0);
           setHue(3,false,0,0,0);
+          setHue(4,false,0,0,0);
+          setHue(5,false,0,0,0);
           delay(5000);
         }
           if (inHG != lastHG) {
+          setHue(6,true,HueGreen,255,255);
+          setHue(1,true,HueGreen,255,255);
+          setHue(2,true,HueGreen,255,255);
           setHue(3,true,HueGreen,255,255);
+          setHue(4,true,HueGreen,255,255);
+          setHue(5,true,HueGreen,255,255);
           Serial.printf("Get Hue Data: ");
+          getHue(6);
+          getHue(1);
+          getHue(2);
           getHue(3);
-          Serial.printf("%f, %f, %i \n", inHG, lastHG, pixelPosition2+1);
+          getHue(4);
+          getHue(5);
+          Serial.printf("%f, %f \n", inHG, lastHG);
+          setHue(6,false,0,0,0);
+          setHue(1,false,0,0,0);
+          setHue(2,false,0,0,0);
           setHue(3,false,0,0,0);
+          setHue(4,false,0,0,0);
+          setHue(5,false,0,0,0);
           delay(5000);
         }
 }

@@ -38,14 +38,14 @@ void setup() {
   button1.attachClick(click1); //initializing the object
   button1.attachDoubleClick(doubleClick1); //initializing the object
   button1.setClickTicks(500); //setting timer on clicks off
-  button1.setPressTicks(2000); //setting timer on click ticks on
+  button1.setPressTicks(1500); //setting timer on click ticks on
   buttonState = false;  //the button state is set to off initialilly
   pixel.begin();  //pixel begin
   pinMode(PIXELPIN, OUTPUT);  //use PIXELPIN as an output
   pixel.setBrightness(250); //set brightness to max
   pixel.show(); //initializing all as of
   Serial1.begin(9600);
-  Serial.begin(115200);
+  Serial.begin(9600);
   pinMode(10, OUTPUT);
   digitalWrite(10, HIGH);
   pinMode(4, OUTPUT);
@@ -91,10 +91,10 @@ void setup() {
 
 void loop() {
   touchSensorBegin();
-  checkBMEHue();
-  testdrawstyles();
-  static unsigned long timer = millis();
-    if (millis() - timer > 30000000) {
+  //checkBMEHue();
+  //testdrawstyles();
+  static unsigned long timer;
+    if (millis() - timer > 10000) {
     timer = millis();
   }
   
@@ -112,7 +112,8 @@ void touchSensorBegin (void){
         pixel.setPixelColor(i+2, blue);
         pixel.setPixelColor(i+3, maize);
         pixel.show();
-        delay(10);
+        //delay(10);
+        Serial.printf("Button single click /n");
       }
     
       for (i = 12; i > 0; i = i - 1) {
@@ -120,7 +121,8 @@ void touchSensorBegin (void){
         pixel.setPixelColor(i+1, blue);   //setting pixel color 
         pixel.setPixelColor(i+2, maize);
         pixel.show();
-        delay(10);
+        //delay(10);
+        Serial.printf("Button single click false /n");
       }
     }
 }
@@ -198,12 +200,12 @@ void doubleClick1() {
 }
 
 void checkBMEHue (void) {
-
+  
   setHue(i,true,HueBlue,255,255);
   Serial.printf("Get Hue Data: ");
   getHue(i);
   setHue(i,false,0,0,0);
-  delay(5000);
+  //delay(5000);
 
   tempC = bme.readTemperature();
   pressPA = bme.readPressure();
@@ -211,27 +213,56 @@ void checkBMEHue (void) {
   tempF = tempC*9/5+32;
   inHG = pressPA/3386; 
   Serial.printf("%f, %f, %f \n", tempF, inHG, humidRH);
-  delay(1000);
+  //delay(1000);
 
 
         if (tempF != lastTemp) {
+          setHue(6,true,HueBlue,255,255);
+          setHue(1,true,HueBlue,255,255);
+          setHue(2,true,HueBlue,255,255);
           setHue(3,true,HueBlue,255,255);
+          setHue(4,true,HueBlue,255,255);
+          setHue(5,true,HueBlue,255,255);
           Serial.printf("Get Hue Data: ");
+          getHue(6);
+          getHue(1);
+          getHue(2);
           getHue(3);
+          getHue(4);
           testdrawstyles();
           display.display();
-          Serial.printf("%f, %f  \n", tempF, lastTemp);
+          Serial.printf("%f, %f \n", tempF, lastTemp);
           lastTemp = tempF;
+          setHue(6,false,0,0,0);
+          setHue(1,false,0,0,0);
+          setHue(2,false,0,0,0);
           setHue(3,false,0,0,0);
-          delay(5000);
+          setHue(4,false,0,0,0);
+          setHue(5,false,0,0,0);
+          //delay(5000);
         }
           if (inHG != lastHG) {
+          setHue(6,true,HueGreen,255,255);
+          setHue(1,true,HueGreen,255,255);
+          setHue(2,true,HueGreen,255,255);
           setHue(3,true,HueGreen,255,255);
+          setHue(4,true,HueGreen,255,255);
+          setHue(5,true,HueGreen,255,255);
           Serial.printf("Get Hue Data: ");
+          getHue(6);
+          getHue(1);
+          getHue(2);
           getHue(3);
+          getHue(4);
+          getHue(5);
           Serial.printf("%f, %f \n", inHG, lastHG);
+          setHue(6,false,0,0,0);
+          setHue(1,false,0,0,0);
+          setHue(2,false,0,0,0);
           setHue(3,false,0,0,0);
-          delay(5000);
+          setHue(4,false,0,0,0);
+          setHue(5,false,0,0,0);
+          //delay(5000);
         }
 }
 
@@ -242,42 +273,42 @@ void testdrawstyles(void) {
   display.setCursor(10, 0);
   display.printf("Temperature:", tempF);
   display.display();
-  delay(1000);
+  //delay(1000);
 
   display.setTextSize(1);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 10);
   display.printf("%f", tempF);
   display.display();
-  delay(1000);
+  //delay(1000);
 
   display.setTextSize(.5);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 20);
   display.printf("Humidity:");
   display.display();
-  delay(1000);
+  //delay(1000);
 
   display.setTextSize(1);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 30);
   display.printf("%f", humidRH);
   display.display();
-  delay(1000);
+  //delay(1000);
 
   display.setTextSize(.5);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 40);
   display.printf("Barometric Pressure:");
   display.display();
-  delay(1000);
+  //delay(1000);
 
   display.setTextSize(.5);  //Draw 5x-scale text
   display.setTextColor(SSD1306_WHITE);  
   display.setCursor(10, 50);
   display.printf("%f", humidRH);
   display.display();
-  delay(1000);
+  //delay(1000);
   }
 
 void printIP() {
