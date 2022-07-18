@@ -20,9 +20,9 @@ const int SCREEN_ADDRESS = 0x3C;
 const int LOGO_HEIGHT = 64;
 const int LOGO_WIDTH = 128;
 const int PIXELPIN = 17; //declare pixel pin as 17
-const int PIXELCOUNT = 12; //declare 16 pixels
+const int PIXELCOUNT = 12; //declare 12 pixels
 int i;  //declaring an variable for my 'for' loop
-int t; //declaring a variable for Rainbow
+int timer2; //declaring a variable for Rainbow
 float tempC, pressPA, humidRH, tempF, inHG, currentTempF, lastTemp, lastHG;
 
 DFRobotDFPlayerMini myDFPlayer;
@@ -42,7 +42,7 @@ void setup() {
   buttonState = false;  //the button state is set to off initialilly
   pixel.begin();  //pixel begin
   pinMode(PIXELPIN, OUTPUT);  //use PIXELPIN as an output
-  pixel.setBrightness(250); //set brightness to max
+  pixel.setBrightness(200); //set brightness to max
   pixel.show(); //initializing all as of
   Serial1.begin(9600);
   Serial.begin(9600);
@@ -57,7 +57,6 @@ void setup() {
   Serial.printf("LinkStatus: %i  \n",Ethernet.linkStatus());
 
   display.begin(SCREEN_ADDRESS);
-  pixel.begin();  //pixel begin
   while(!Serial);
   status = bme.begin(0x76);
 
@@ -91,28 +90,31 @@ void setup() {
 
 void loop() {
   touchSensorBegin();
-  //checkBMEHue();
-  //testdrawstyles();
   static unsigned long timer;
     if (millis() - timer > 10000) {
     timer = millis();
   }
   
-  if (myDFPlayer.available()) {
-    printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
-  }  
+//  if (myDFPlayer.available()) {
+//    printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
+//  }
+    if (millis() - timer2 > 20000) {
+    checkBMEHue ();
+    testdrawstyles();
+    timer2 = millis();
+  }
 }
 
 void touchSensorBegin (void){  
   button1.tick();
   if (buttonState == true){
       for (i = 0; i < 12; i = i + 1) {  //telling LED use 0 -76 when incrementing lights
-        pixel.clear();
+        //pixel.clear();
         pixel.setPixelColor(i+1, maize);   //setting pixel color as rainbow[] % is equal to the remainder of the div
         pixel.setPixelColor(i+2, blue);
         pixel.setPixelColor(i+3, maize);
         pixel.show();
-        //delay(10);
+        delay(10);
         Serial.printf("Button single click /n");
       }
     
@@ -121,7 +123,7 @@ void touchSensorBegin (void){
         pixel.setPixelColor(i+1, blue);   //setting pixel color 
         pixel.setPixelColor(i+2, maize);
         pixel.show();
-        //delay(10);
+        delay(10);
         Serial.printf("Button single click false /n");
       }
     }
@@ -191,21 +193,21 @@ void printDetail(uint8_t type, int value){
 }
 void click1() {  //function that is going to tell Serial printf to log clicks on and off
   buttonState = !buttonState; //toggling buttonState
-  Serial.printf("Button single click /n");
+  //Serial.printf("Button single click /n");
 }
 
 void doubleClick1() {
   blinker = !blinker;
-  Serial.printf("Button double click /n"); 
+  //Serial.printf("Button double click /n"); 
 }
 
 void checkBMEHue (void) {
   
-  setHue(i,true,HueBlue,255,255);
+  setHue(3,true,HueBlue,255,255);
   Serial.printf("Get Hue Data: ");
-  getHue(i);
-  setHue(i,false,0,0,0);
-  //delay(5000);
+  getHue(3);
+  setHue(3,false,0,0,0);
+  //delay(100);
 
   tempC = bme.readTemperature();
   pressPA = bme.readPressure();
@@ -213,56 +215,37 @@ void checkBMEHue (void) {
   tempF = tempC*9/5+32;
   inHG = pressPA/3386; 
   Serial.printf("%f, %f, %f \n", tempF, inHG, humidRH);
-  //delay(1000);
+  //delay(100);
 
 
-        if (tempF != lastTemp) {
-          setHue(6,true,HueBlue,255,255);
+        if (tempF > 80.00) {
           setHue(1,true,HueBlue,255,255);
           setHue(2,true,HueBlue,255,255);
           setHue(3,true,HueBlue,255,255);
-          setHue(4,true,HueBlue,255,255);
-          setHue(5,true,HueBlue,255,255);
           Serial.printf("Get Hue Data: ");
-          getHue(6);
-          getHue(1);
-          getHue(2);
-          getHue(3);
-          getHue(4);
-          testdrawstyles();
           display.display();
           Serial.printf("%f, %f \n", tempF, lastTemp);
           lastTemp = tempF;
-          setHue(6,false,0,0,0);
-          setHue(1,false,0,0,0);
-          setHue(2,false,0,0,0);
-          setHue(3,false,0,0,0);
-          setHue(4,false,0,0,0);
-          setHue(5,false,0,0,0);
-          //delay(5000);
         }
+
+            else {
+              setHue(1, false, 0, 0, 0);
+              setHue(2, false, 0, 0, 0);
+              setHue(3, false, 0, 0, 0);
+        }
+        
           if (inHG != lastHG) {
           setHue(6,true,HueGreen,255,255);
-          setHue(1,true,HueGreen,255,255);
-          setHue(2,true,HueGreen,255,255);
-          setHue(3,true,HueGreen,255,255);
           setHue(4,true,HueGreen,255,255);
           setHue(5,true,HueGreen,255,255);
           Serial.printf("Get Hue Data: ");
-          getHue(6);
-          getHue(1);
-          getHue(2);
-          getHue(3);
-          getHue(4);
-          getHue(5);
           Serial.printf("%f, %f \n", inHG, lastHG);
-          setHue(6,false,0,0,0);
-          setHue(1,false,0,0,0);
-          setHue(2,false,0,0,0);
-          setHue(3,false,0,0,0);
-          setHue(4,false,0,0,0);
-          setHue(5,false,0,0,0);
-          //delay(5000);
+          lastHG = inHG;
+        }
+            else {
+              setHue(6, false, 0, 0, 0);
+              setHue(4, false, 0, 0, 0);
+              setHue(5, false, 0, 0, 0);
         }
 }
 
