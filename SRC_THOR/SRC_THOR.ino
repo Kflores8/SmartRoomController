@@ -29,7 +29,7 @@ const int RESET = 9;
 const int CHIPSET = 10;
 int i;  //declaring an variable for my 'for' loop
 int timer2; //declaring a variable for Rainbow
-
+int inputValue;
 int wemoPosition;
 int myWemo[] = {0,1,2,3,4};
 
@@ -51,10 +51,10 @@ void setup() {
   button1.setClickTicks(500); //setting timer on clicks off
   button1.setPressTicks(1500); //setting timer on click ticks on
   buttonState = false;  //the button state is set to off initialilly
-  button2.attachClick(click1); //initializing the object
-  button2.attachDoubleClick(doubleClick1); //initializing the object
+  button2.attachClick(click2); //initializing the object
+ // button2.attachDoubleClick(doubleClick1); //initializing the object
   button2.setClickTicks(500);
-  button2.setPressTicks(1500);
+  button2.setPressTicks(2000);
   buttonState2 = false; 
   pixel.begin();  //pixel begin
   pinMode(PIXELPIN, OUTPUT);  //use PIXELPIN as an output
@@ -115,9 +115,9 @@ void loop() {
     timer = millis();
   }
   
-//  if (myDFPlayer.available()) {
-//    printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
-//  }
+  if (myDFPlayer.available()) {
+    printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
+  }
     if (millis() - timer2 > 20000) {
     checkBMEHue ();
     testdrawstyles();
@@ -212,24 +212,45 @@ void printDetail(uint8_t type, int value){
   }
   
 }
+
+void checkWemo (void){
+int myButton;
+  button2.tick();  //check the state of the button
+    inputValue = digitalRead(myButton);
+    Serial.printf("%i \n", inputValue);
+    //wemoPosition = map(position,0,3,0,4);
+    
+}
+
 void click1() {  //function that is going to tell Serial printf to log clicks on and off
   buttonState = !buttonState; //toggling buttonState
-  buttonState2 = !buttonState2;//toggling buttonState
-          
-          if (buttonState2 == true) {
+}
+
+void click2() {  //function that is going to tell Serial printf to log clicks on and off
+  buttonState2 = !buttonState2;
+  
+      if (buttonState2 == true) {
       switchON(myWemo[2]);
       Serial.printf("Hello Wemo %i /n", myWemo);
     }      
           else {
-            switchOFF(myWemo[2]);
-            Serial.printf("Bye Wemo %i /n", myWemo);
+        switchOFF(myWemo[2]);
+        Serial.printf("Bye Wemo %i /n", myWemo);
       }
 }
 
-void doubleClick1() {
-  blinker = !blinker;
-  //Serial.printf("Button double click /n"); 
-}
+//void doubleClick1() {
+//  blinker = !blinker;
+//  //Serial.printf("Button double click /n");
+//            if (blinker == true) {
+//      switchON(myWemo[2]);
+//      Serial.printf("Hello Wemo %i /n", myWemo);
+//    }      
+//          else {
+//            switchOFF(myWemo[2]);
+//            Serial.printf("Bye Wemo %i /n", myWemo);
+//      } 
+//}
 
 void checkBMEHue (void) {
   
@@ -330,26 +351,4 @@ void printIP() {
     Serial.printf("%i.",Ethernet.localIP()[thisByte]);
   }
   Serial.printf("%i\n",Ethernet.localIP()[3]);
-}
-
-void checkWemo (void){
-
-int inputValue;
-int myButton = 4; 
-int myWemo[] = {0,1,2,3,4};
-
-bool buttonState2, doubleclick, longPressStart;
-
-button2.tick();
-inputValue = digitalRead(myButton);
-    
-    if (buttonState2 == true) {
-      switchON(myWemo[2]);
-      Serial.printf("Hello Wemo %i /n", myWemo);
-    }      
-          else {
-            switchOFF(myWemo[2]);
-            Serial.printf("Bye Wemo %i /n", myWemo);
-          }
-Serial.printf("%i \n", inputValue);
 }

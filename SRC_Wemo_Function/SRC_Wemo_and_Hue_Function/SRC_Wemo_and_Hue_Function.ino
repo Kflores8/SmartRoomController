@@ -24,7 +24,7 @@
  int myWemo[] = {0,1,2,3,4};
  int myHue[] = {0, 1, 2, 3, 4, 5};
 
- bool buttonState, doubleclick, longPressStart;
+ bool buttonState2, doubleclick, longPressStart;
  
 EthernetClient client;
 bool status;   //user to ensure port openned correctly
@@ -38,12 +38,12 @@ void setup() {
   pinMode(4, INPUT);
   digitalWrite(4, HIGH);
   
-  button2.attachClick(click1); //initializing the object
+  button2.attachClick(click2); //initializing the object
   button2.attachDoubleClick(doubleClick1); //initializing the object
   button2.attachLongPressStart(longPressStart1);//initializing the object
   button2.setClickTicks(750);
   button2.setPressTicks(1000);
-  buttonState = false; 
+  buttonState2 = false; 
 
   //Open Serial Communication and wait for port to open:
   Serial.begin(9600);
@@ -65,10 +65,10 @@ void loop() {
     
 }
 
-  void click1() {  //function that is going to tell Serial printf to log clicks on and off
-  buttonState = !buttonState; //toggling buttonState
-
-      if (buttonState == true) {
+ void click2() {  //function that is going to tell Serial printf to log clicks on and off
+  buttonState2 = !buttonState2;
+  
+      if (buttonState2 == true) {
       switchON(myWemo[2]);
       Serial.printf("Hello Wemo %i /n", myWemo);
     }      
