@@ -2,6 +2,7 @@
 #include <Ethernet.h>
 #include <mac.h>
 #include <hue.h>
+#include <wemo.h>
 #include <Wire.h>
 #include <SPI.h>
 #include <Adafruit_GFX.h>
@@ -21,6 +22,11 @@ const int LOGO_HEIGHT = 64;
 const int LOGO_WIDTH = 128;
 const int PIXELPIN = 17; //declare pixel pin as 17
 const int PIXELCOUNT = 12; //declare 12 pixels
+const int BUTTONPIN = 4; 
+const int ETHERIN = 12;
+const int ETHEROUT = 11;
+const int RESET = 9; 
+const int CHIPSET = 10;
 int i;  //declaring an variable for my 'for' loop
 int timer2; //declaring a variable for Rainbow
 float tempC, pressPA, humidRH, tempF, inHG, currentTempF, lastTemp, lastHG;
@@ -28,9 +34,11 @@ float tempC, pressPA, humidRH, tempF, inHG, currentTempF, lastTemp, lastHG;
 DFRobotDFPlayerMini myDFPlayer;
 void printDetail(uint8_t type, int value);
 bool status, enableMusicPlayer, buttonState, onoff, blinker;
+byte thisbyte;
 
 Adafruit_NeoPixel pixel(12, 17, NEO_GRB + NEO_KHZ800);  //declaring my object
 OneButton button1(23, false, INPUT);  //object defined as pin 23, circuit is pull down, and button is considered an input 
+OneButton button2(4, false, INPUT);
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET); 
 Adafruit_BME280 bme;
 
@@ -103,6 +111,7 @@ void loop() {
     testdrawstyles();
     timer2 = millis();
   }
+  checkWemo();
 }
 
 void touchSensorBegin (void){  
@@ -300,4 +309,27 @@ void printIP() {
     Serial.printf("%i.",Ethernet.localIP()[thisByte]);
   }
   Serial.printf("%i\n",Ethernet.localIP()[3]);
+}
+
+void checkWemo (void){
+   
+int i;
+int t;
+int inputValue;
+int myButton = 4; 
+int myWemo[] = {0,1,2,3,4};
+
+bool buttonState, doubleclick, longPressStart;
+
+inputValue = digitalRead(myButton);
+Serial.printf("%i \n", inputValue);
+
+    if (buttonState == true) {
+      switchON(myWemo[2]);
+      Serial.printf("Hello Wemo %i /n", myWemo);
+    }      
+          else {
+            switchOFF(myWemo[2]);
+            Serial.printf("Bye Wemo %i /n", myWemo);
+          }
 }
