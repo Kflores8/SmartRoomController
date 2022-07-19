@@ -8,7 +8,7 @@
  #include <Ethernet.h>
  
  
- OneButton button1(4, false, INPUT);  //object defined as pin 4, circuit is pull down, and button is considered an input
+ OneButton button2(4, false, INPUT);  //object defined as pin 4, circuit is pull down, and button is considered an input
  
  const int BUTTONPIN = 4; 
  const int ETHERIN = 12;
@@ -38,11 +38,11 @@ void setup() {
   pinMode(4, INPUT);
   digitalWrite(4, HIGH);
   
-  button1.attachClick(click1); //initializing the object
-  button1.attachDoubleClick(doubleClick1); //initializing the object
-  button1.attachLongPressStart(longPressStart1);//initializing the object
-  button1.setClickTicks(750);
-  button1.setPressTicks(1000);
+  button2.attachClick(click1); //initializing the object
+  button2.attachDoubleClick(doubleClick1); //initializing the object
+  button2.attachLongPressStart(longPressStart1);//initializing the object
+  button2.setClickTicks(750);
+  button2.setPressTicks(1000);
   buttonState = false; 
 
   //Open Serial Communication and wait for port to open:
@@ -58,7 +58,7 @@ void setup() {
 }
 
 void loop() {
-  button1.tick();  //check the state of the button
+  button2.tick();  //check the state of the button
     inputValue = digitalRead(myButton);
     Serial.printf("%i \n", inputValue);
     //wemoPosition = map(position,0,3,0,4);

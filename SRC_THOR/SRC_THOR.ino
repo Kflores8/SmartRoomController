@@ -29,11 +29,15 @@ const int RESET = 9;
 const int CHIPSET = 10;
 int i;  //declaring an variable for my 'for' loop
 int timer2; //declaring a variable for Rainbow
+
+int wemoPosition;
+int myWemo[] = {0,1,2,3,4};
+
 float tempC, pressPA, humidRH, tempF, inHG, currentTempF, lastTemp, lastHG;
 
 DFRobotDFPlayerMini myDFPlayer;
 void printDetail(uint8_t type, int value);
-bool status, enableMusicPlayer, buttonState, onoff, blinker;
+bool status, enableMusicPlayer, buttonState, buttonState2, onoff, blinker;
 byte thisbyte;
 
 Adafruit_NeoPixel pixel(12, 17, NEO_GRB + NEO_KHZ800);  //declaring my object
@@ -44,10 +48,14 @@ Adafruit_BME280 bme;
 
 void setup() {
   button1.attachClick(click1); //initializing the object
-  button1.attachDoubleClick(doubleClick1); //initializing the object
   button1.setClickTicks(500); //setting timer on clicks off
   button1.setPressTicks(1500); //setting timer on click ticks on
   buttonState = false;  //the button state is set to off initialilly
+  button2.attachClick(click1); //initializing the object
+  button2.attachDoubleClick(doubleClick1); //initializing the object
+  button2.setClickTicks(500);
+  button2.setPressTicks(1500);
+  buttonState2 = false; 
   pixel.begin();  //pixel begin
   pinMode(PIXELPIN, OUTPUT);  //use PIXELPIN as an output
   pixel.setBrightness(200); //set brightness to max
@@ -97,7 +105,11 @@ void setup() {
 }
 
 void loop() {
-  touchSensorBegin();
+          
+  if (millis() - timer2 > 5000) {
+    touchSensorBegin();
+  }
+  checkWemo();
   static unsigned long timer;
     if (millis() - timer > 10000) {
     timer = millis();
@@ -111,11 +123,11 @@ void loop() {
     testdrawstyles();
     timer2 = millis();
   }
-  checkWemo();
 }
 
 void touchSensorBegin (void){  
   button1.tick();
+  
   if (buttonState == true){
       for (i = 0; i < 12; i = i + 1) {  //telling LED use 0 -76 when incrementing lights
         //pixel.clear();
@@ -202,7 +214,16 @@ void printDetail(uint8_t type, int value){
 }
 void click1() {  //function that is going to tell Serial printf to log clicks on and off
   buttonState = !buttonState; //toggling buttonState
-  //Serial.printf("Button single click /n");
+  buttonState2 = !buttonState2;//toggling buttonState
+          
+          if (buttonState2 == true) {
+      switchON(myWemo[2]);
+      Serial.printf("Hello Wemo %i /n", myWemo);
+    }      
+          else {
+            switchOFF(myWemo[2]);
+            Serial.printf("Bye Wemo %i /n", myWemo);
+      }
 }
 
 void doubleClick1() {
@@ -312,19 +333,17 @@ void printIP() {
 }
 
 void checkWemo (void){
-   
-int i;
-int t;
+
 int inputValue;
 int myButton = 4; 
 int myWemo[] = {0,1,2,3,4};
 
-bool buttonState, doubleclick, longPressStart;
+bool buttonState2, doubleclick, longPressStart;
 
+button2.tick();
 inputValue = digitalRead(myButton);
-Serial.printf("%i \n", inputValue);
-
-    if (buttonState == true) {
+    
+    if (buttonState2 == true) {
       switchON(myWemo[2]);
       Serial.printf("Hello Wemo %i /n", myWemo);
     }      
@@ -332,4 +351,5 @@ Serial.printf("%i \n", inputValue);
             switchOFF(myWemo[2]);
             Serial.printf("Bye Wemo %i /n", myWemo);
           }
+Serial.printf("%i \n", inputValue);
 }
