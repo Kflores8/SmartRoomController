@@ -120,6 +120,7 @@ void setup() {
   button1.setPressTicks(1500); //setting timer on click ticks on
   buttonState = false;  //the button state is set to off initialilly
   button2.attachClick(click2); //initializing the object
+  button2.attachLongPressStart(longPressStart1);
   button2.setClickTicks(500);
   button2.setPressTicks(2000);
   buttonState2 = false; 
@@ -134,7 +135,7 @@ void setup() {
 
   Ethernet.begin(mac);
   delay(2000);          //ensure Serial Monitor is up and running           
-  printIP();
+  //printIP();
   Serial.printf("LinkStatus: %i  \n",Ethernet.linkStatus());
 
   display.begin(SCREEN_ADDRESS);
@@ -305,6 +306,19 @@ void click2() {  //function that is going to tell Serial printf to log clicks on
             switchOFF(myWemo[2]);
             Serial.printf("Bye Wemo %i /n", myWemo);
           }
+}
+
+void longPressStart1() {
+  buttonState2 = !buttonState2;
+        if (buttonState2 == true) {
+      switchON(myWemo[3]);
+      Serial.printf("Hello Wemo %i /n", myWemo);
+      }      
+          else {
+            switchOFF(myWemo[3]);
+            Serial.printf("Bye Wemo %i /n", myWemo);
+          }
+  Serial.printf("Button double click /n");
 }
 
 void checkBMEHue (void) {
