@@ -1,8 +1,8 @@
 /*
- * Project: Smart Room Controll
- * Description: Learn about objects
+ * Project: Smart Room Controller
+ * Description: Portion of THOR SRC for Touch Pad Function.
  * Author: Kevin flores
- * Date: 28-Jun-2022
+ * Date: 19-July-2022
  */
  
 #include <OneButton.h>

@@ -151,7 +151,7 @@ void setup() {
         for(;;); // Don't proceed, loop forever
         }
         
-  Serial.printf();
+  Serial.printf("");
   Serial.printf("DFRobot DFPlayer Mini Demo");
   Serial.printf("Initializing DFPlayer ... (May take 3~5 seconds)");
   
@@ -166,7 +166,7 @@ void setup() {
   delay(2000);
   Serial.printf("DFPlayer Mini online.");
   
-  myDFPlayer.volume(5);  //Set volume value. From 0 to 30
+  myDFPlayer.volume(30);  //Set volume value. From 0 to 30
   myDFPlayer.play(1);  //Play the first mp3
 }
 

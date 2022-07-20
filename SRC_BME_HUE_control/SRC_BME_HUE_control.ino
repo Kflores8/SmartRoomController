@@ -66,11 +66,11 @@ void loop() {
    *  int - brightness - from 0 to 255
    *  int - saturation - from 0 to 255
    */
-  setHue(i,true,HueBlue,255,255);
-  Serial.printf("Get Hue Data: ");
-  getHue(i);
-  setHue(i,false,0,0,0);
-  delay(5000);
+//  setHue(i,true,HueBlue,255,255);
+//  Serial.printf("Get Hue Data: ");
+//  getHue(i);
+//  setHue(i,false,0,0,0);
+//  delay(5000);
 
   tempC = bme.readTemperature();
   pressPA = bme.readPressure();
@@ -81,54 +81,54 @@ void loop() {
   delay(1000);
 
 
-        if (tempF != lastTemp) {
-          setHue(6,true,HueBlue,255,255);
-          setHue(1,true,HueBlue,255,255);
-          setHue(2,true,HueBlue,255,255);
-          setHue(3,true,HueBlue,255,255);
-          setHue(4,true,HueBlue,255,255);
-          setHue(5,true,HueBlue,255,255);
-          Serial.printf("Get Hue Data: ");
-          getHue(6);
-          getHue(1);
-          getHue(2);
-          getHue(3);
-          getHue(4);
-          testdrawstyles();
-          display.display();
-          Serial.printf("%f, %f \n", tempF, lastTemp);
-          lastTemp = tempF;
-          setHue(6,false,0,0,0);
-          setHue(1,false,0,0,0);
-          setHue(2,false,0,0,0);
-          setHue(3,false,0,0,0);
-          setHue(4,false,0,0,0);
-          setHue(5,false,0,0,0);
-          delay(5000);
-        }
-          if (inHG != lastHG) {
-          setHue(6,true,HueGreen,255,255);
-          setHue(1,true,HueGreen,255,255);
-          setHue(2,true,HueGreen,255,255);
-          setHue(3,true,HueGreen,255,255);
-          setHue(4,true,HueGreen,255,255);
-          setHue(5,true,HueGreen,255,255);
-          Serial.printf("Get Hue Data: ");
-          getHue(6);
-          getHue(1);
-          getHue(2);
-          getHue(3);
-          getHue(4);
-          getHue(5);
-          Serial.printf("%f, %f \n", inHG, lastHG);
-          setHue(6,false,0,0,0);
-          setHue(1,false,0,0,0);
-          setHue(2,false,0,0,0);
-          setHue(3,false,0,0,0);
-          setHue(4,false,0,0,0);
-          setHue(5,false,0,0,0);
-          delay(5000);
-        }
+//        if (tempF != lastTemp) {
+//          setHue(6,true,HueBlue,255,255);
+//          setHue(1,true,HueBlue,255,255);
+//          setHue(2,true,HueBlue,255,255);
+//          setHue(3,true,HueBlue,255,255);
+//          setHue(4,true,HueBlue,255,255);
+//          setHue(5,true,HueBlue,255,255);
+//          Serial.printf("Get Hue Data: ");
+//          getHue(6);
+//          getHue(1);
+//          getHue(2);
+//          getHue(3);
+//          getHue(4);
+//          testdrawstyles();
+//          display.display();
+//          Serial.printf("%f, %f \n", tempF, lastTemp);
+//          lastTemp = tempF;
+//          setHue(6,false,0,0,0);
+//          setHue(1,false,0,0,0);
+//          setHue(2,false,0,0,0);
+//          setHue(3,false,0,0,0);
+//          setHue(4,false,0,0,0);
+//          setHue(5,false,0,0,0);
+//          delay(5000);
+//        }
+//          if (inHG != lastHG) {
+//          setHue(6,true,HueGreen,255,255);
+//          setHue(1,true,HueGreen,255,255);
+//          setHue(2,true,HueGreen,255,255);
+//          setHue(3,true,HueGreen,255,255);
+//          setHue(4,true,HueGreen,255,255);
+//          setHue(5,true,HueGreen,255,255);
+//          Serial.printf("Get Hue Data: ");
+//          getHue(6);
+//          getHue(1);
+//          getHue(2);
+//          getHue(3);
+//          getHue(4);
+//          getHue(5);
+//          Serial.printf("%f, %f \n", inHG, lastHG);
+//          setHue(6,false,0,0,0);
+//          setHue(1,false,0,0,0);
+//          setHue(2,false,0,0,0);
+//          setHue(3,false,0,0,0);
+//          setHue(4,false,0,0,0);
+//          setHue(5,false,0,0,0);
+//          delay(5000);
+//        }
 }
 
 void testdrawstyles(void) {
