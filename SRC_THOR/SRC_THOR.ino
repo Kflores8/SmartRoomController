@@ -167,7 +167,7 @@ void setup() {
   delay(2000);
   Serial.printf("DFPlayer Mini online.");
   
-  myDFPlayer.volume(30);  //Set volume value. From 0 to 30
+  myDFPlayer.volume(10);  //Set volume value. From 0 to 30
   myDFPlayer.play(1);  //Play the first mp3
 }
 
@@ -351,17 +351,27 @@ void checkBMEHue (void) {
             }
         
           if (inHG != lastHG) {
-            setHue(6,true,HueGreen,255,255);
             setHue(4,true,HueGreen,255,255);
             setHue(5,true,HueGreen,255,255);
+            setHue(6,true,HueViolet,255,255);
+            Serial.printf("Get Hue Data: ");
+            Serial.printf("%f, %f \n", inHG, lastHG);
+            lastHG = inHG;
+          }
+            else {
+              setHue(4, false, 0, 0, 0);
+              setHue(5, false, 0, 0, 0);
+              setHue(6, false, 0, 0, 0);
+            }
+            
+            if (inHG > 60.00) {
+            setHue(6,true,HueViolet,255,255);
             Serial.printf("Get Hue Data: ");
             Serial.printf("%f, %f \n", inHG, lastHG);
             lastHG = inHG;
           }
             else {
               setHue(6, false, 0, 0, 0);
-              setHue(4, false, 0, 0, 0);
-              setHue(5, false, 0, 0, 0);
             }
 }
 
